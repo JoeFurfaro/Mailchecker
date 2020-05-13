@@ -4,8 +4,13 @@
     <head>
         <title>Mailchecker</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- Insert this line above script imports  -->
+        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+        <script type="text/javascript" language="javascript" src="jquery.js"></script>
         <script type="text/javascript" language="javascript" src="kevin.js"></script>
+
+        <script>if (window.module) module = window.module;</script>
     </head>
 
     <body class="bg-dark">
@@ -24,13 +29,16 @@
                                 <input class="form-control text-center" placeholder="Enter last name" id="last-name" />
 
                                 <label class="text-light mt-4">Domain</label>
-                                <input class="form-control text-center" placeholder="Enter domain" id="domain" />
+                                <input class="form-control text-center" placeholder="Enter domain" id="domain" onkeyup="enter_gen(event)" />
 
                                 <button class="btn btn-primary mt-4" onclick="generate()">
                                     Generate Email Addresses
-                                </button>
+                                </button><br />
 
-                                <hr class="mt-5" />
+                                <input type="checkbox" id="autocopy" class="d-inline mt-4" checked>
+                                <label for="autocopy" class="d-inline text-light">Automatically copy results</label>
+
+                                <hr class="mt-3" />
 
                                 <h1 class="h3 text-light mb-4">Results</h1>
 
@@ -38,7 +46,7 @@
                                     Copy Results
                                 </button>
 
-                                <div id="results" class="mt-3">
+                                <div id="results" class="mt-3 text-light">
                                     <p class="text-light mb-1">The results will be displayed here</p>
                                 </div>
 
